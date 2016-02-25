@@ -19,6 +19,7 @@ public class Register {
         
     }
     public  final void addItemToSale(String prodId, int qty) {
+     
     }
 
     public final  Receipt getReceipt() {
@@ -26,8 +27,11 @@ public class Register {
     }
 
     public final  void setReceipt(Receipt receipt) {
-        // needs validation 
+      if(receipt == null) {
+            System.out.println("Register.setReceipt method given illegal argument");
+        }
         this.receipt = receipt;
+    
     }
 
     public final  String getStoreName() {
@@ -35,7 +39,10 @@ public class Register {
     }
 
     public final  void setStoreName(String storeName) {
-        //needs validation 
+           if(storeName == null) {
+            System.out.println("Receipt.setStoreName method given illegal argument");
+        }
+    
         this.storeName = storeName;
     }
     

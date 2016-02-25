@@ -26,16 +26,20 @@ public class Product {
     }
 
     public  final void setProductId(String productId) {
-        // needs validation 
+    if(productId == null) {
+            System.out.println("Product.setProductID method given illegal argument");
+        }    
         this.productId = productId;
     }
-
     public  final String getProductName() {
         return productName;
     }
 
     public final void setProductName(String productName) {
-         // needs validation 
+    if(productName == null) {
+            System.out.println("Sorry, Product.setName method given illegal argument");
+        }    
+        
         this.productName = productName;
     }
 
@@ -44,19 +48,23 @@ public class Product {
     }
 
     public final void setUnitCost(double unitCost) {
-         // needs validation 
+       if(unitCost == 0) {
+            System.out.println("Product.setUnitCost method  given illegal argument");
+        }    
         this.unitCost = unitCost;
     }
-
     public final DiscountStrategy getDiscount() {
         return discount;
     }
 
     public  final void setDiscount(DiscountStrategy discount) {
-         // needs validation 
+   if(discount == null) {
+            System.out.println("Product.setDiscount method  given illegal argument");
+        }    
         this.discount = discount;
     }
-    
-    
+    public final double getDiscountedProductTotal(int qty){
+        return discount.getDiscountAmount(qty, unitCost);
+    }  
     
 }

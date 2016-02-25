@@ -23,16 +23,19 @@ public class Customer {
     }
 
     public final  void setCustomerId(String customerId) {
-        // needs validation 
+   if(customerId == null) {
+            System.out.println("Customer.setCustID method given illegal argument");
+        }
         this.customerId = customerId;
     }
-
     public final  String getName() {
         return name;
     }
 
     public final void setName(String name) {
-        // needs validation 
+    if(name == null) {
+            System.out.println("Customer.setName method given illegal argument");
+        }
         this.name = name;
     }
     

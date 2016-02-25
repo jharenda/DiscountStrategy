@@ -12,8 +12,12 @@ public class Startup {
      */
     public static void main(String[] args) {
     // KLUDGE: do configuration here
+    DBS db = new FakeDatabase(); 
+    
     
     // Start talking to objects
+    Register reg = new Register(); 
+    reg.startNewSale("100", db);
     
     }
     

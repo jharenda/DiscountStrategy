@@ -41,7 +41,7 @@ public class QtyDiscount implements DiscountStrategy {
     }
 
     public  final void setDiscountRate(double discountRate) {
-        // needs validation 
+   // needs validation- not sure what to do about numberic validation 
         this.discountRate = discountRate;
     }
     
