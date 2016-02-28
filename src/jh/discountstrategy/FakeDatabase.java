@@ -12,9 +12,9 @@ public class FakeDatabase implements DBS {
         new Customer("117", "Joan Harris")};
 
     private Product[] products = {
-        new Product("11", "Met's Hat", 29.95, new PercentOffDiscount(.10)),
-        new Product("12", "Women's Bluse", 49.95, new FlatAmountDiscount(5.00)),
-        new Product("17", "Mens's Belt", 39.95, new NoDiscount())};
+        new Product("11", "Met's Hat     ", 29.95, new PercentOffDiscount(.10)),
+        new Product("12", "Women's Blouse", 49.95, new FlatAmountDiscount(5.00)),
+        new Product("17", "Mens's Belt   ", 39.95, new NoDiscount())};
 
     @Override
     public final Customer findCustomerById(String custId) {
@@ -23,8 +23,6 @@ public class FakeDatabase implements DBS {
             System.out.println("FakeDatabase.findCustomerById method given illegal argument");
         }
        else {
-       
-
         for (Customer c : customers) {
             if (c.getCustomerId().equals(custId)) {
                 customer = c;

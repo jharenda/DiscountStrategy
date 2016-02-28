@@ -24,7 +24,8 @@ public class NoDiscount implements DiscountStrategy {
     }
 
     public  final void setDiscountRate(double discountRate) {
-        // needs validation 
+        if (discountRate < 0)
+            System.out.println("NoDiscount.setDiscountRate given illegal argument.");
         this.discountRate = discountRate;
     }
     

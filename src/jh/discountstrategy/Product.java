@@ -1,4 +1,3 @@
-
 package jh.discountstrategy;
 
 /**
@@ -6,40 +5,41 @@ package jh.discountstrategy;
  * @author Jennifer
  */
 public class Product {
+
     // product wouldn't know about quantity- that depends on the sale
     // discounts depend on products, so need discount here
     private String productId;
     private String productName;
-    private double unitCost; 
-    private DiscountStrategy discount; 
+    private double unitCost;
+    private DiscountStrategy discount;
 
     public Product(String productId, String productName, double unitCost, DiscountStrategy discount) {
-      setProductId(productId);
-      setProductName(productName);
-      setUnitCost(unitCost);
-      setDiscount(discount);
+        setProductId(productId);
+        setProductName(productName);
+        setUnitCost(unitCost);
+        setDiscount(discount);
     }
-    
 
     public final String getProductId() {
         return productId;
     }
 
-    public  final void setProductId(String productId) {
-    if(productId == null) {
+    public final void setProductId(String productId) {
+        if (productId == null) {
             System.out.println("Product.setProductID method given illegal argument");
-        }    
+        }
         this.productId = productId;
     }
-    public  final String getProductName() {
+
+    public final String getProductName() {
         return productName;
     }
 
     public final void setProductName(String productName) {
-    if(productName == null) {
+        if (productName == null) {
             System.out.println("Sorry, Product.setName method given illegal argument");
-        }    
-        
+        }
+
         this.productName = productName;
     }
 
@@ -48,23 +48,26 @@ public class Product {
     }
 
     public final void setUnitCost(double unitCost) {
-       if(unitCost == 0) {
+        if (unitCost == 0) {
             System.out.println("Product.setUnitCost method  given illegal argument");
-        }    
+        }
         this.unitCost = unitCost;
     }
+
     public final DiscountStrategy getDiscount() {
         return discount;
     }
 
-    public  final void setDiscount(DiscountStrategy discount) {
-   if(discount == null) {
+    public final void setDiscount(DiscountStrategy discount) {
+        if (discount == null) {
             System.out.println("Product.setDiscount method  given illegal argument");
-        }    
+        }
         this.discount = discount;
     }
-    public final double getDiscountedProductTotal(int qty){
+
+    public final double getDiscountedProductTotal(int qty) {
+
         return discount.getDiscountAmount(qty, unitCost);
-    }  
-    
+    }
+
 }

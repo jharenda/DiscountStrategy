@@ -1,13 +1,17 @@
 package jh.discountstrategy;
 
+import java.text.NumberFormat;
+
 /**
  *
  * @author Jennifer
  */
 public class LineItem {
 
+    NumberFormat nf = NumberFormat.getCurrencyInstance();
     private Product product;
     private int qty;
+    private double[] subtotals;
 
     public final void setQty(int qty) {
         if (qty == 0) {
@@ -22,14 +26,17 @@ public class LineItem {
 
     public LineItem() {
     }
- public String getLineItemData () {
-    String data = "Prod ID Item Qty\n" + 
-            "------\n"
-            + this.getProduct().getProductId() + " " +  this.getProduct().getProductName(); 
-     return data + " " +  this.getDiscountedSubTotal(); 
- }
+
+    //needs to be better formatted for allignment 
+    public String getLineItemData() {
+        String data
+                = "----     ------            ------     ------         ------           ------\n"
+                + this.getProduct().getProductId() + "       " + this.getProduct().getProductName() + "    " + this.getQty() + "          " + nf.format(getSubTotal()) + "        " + nf.format(this.getDiscountedSubTotal()) + "             " + nf.format(this.getProduct().getDiscount().getDiscountAmount(qty, product.getUnitCost()));
+        return data;
+    }
+
     public LineItem(String productId, int qty, DBS db) {
-        setProduct(db.FindProductById(productId)); 
+        setProduct(db.FindProductById(productId));
         this.qty = qty;
     }
 
@@ -60,11 +67,14 @@ public class LineItem {
     }
 
     public final double getSubTotal() {
-        return product.getUnitCost() * qty;
+        double subTotal = 0.0;
+        subTotal = product.getUnitCost() * qty;
+        return subTotal;
     }
 
     public final double getDiscountedSubTotal() {
-        return (product.getUnitCost() * qty) - product.getDiscountedProductTotal(qty);
-
+        double total = 0.0;
+        total = (product.getUnitCost() * qty) - product.getDiscountedProductTotal(qty);
+        return total;
     }
 }

@@ -5,17 +5,18 @@
  */
 package jh.discountstrategy;
 
+import javax.swing.JOptionPane;
+
 /**
- *
+ * Would need to do gui- specific formatting here, but it works otherwise
  * @author Jennifer
  */
-public class ConsoleOutput implements OutputStrategy {
+public class guiOutput implements OutputStrategy {
 
     @Override
     public void printReceipt(Receipt r) {
-        System.out.println(r.printReceipt());
+        JOptionPane.showMessageDialog(
+                null, r.printReceipt());
     }
 
-    }
-    
-
+}

@@ -10,5 +10,5 @@ package jh.discountstrategy;
  * @author Jennifer
  */
 public interface OutputStrategy {
-    public abstract void printReceipt();
+    public abstract void printReceipt(Receipt r);
 }
