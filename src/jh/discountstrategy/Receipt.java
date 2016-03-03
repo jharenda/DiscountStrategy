@@ -41,7 +41,7 @@ public class Receipt {
     }
 
     public final String lineItemHeader() {
-        String header = "ID       Name              Qty        Subtotal       Sbt. After Dis   Saved\n";
+        String header = "ID       Name                       Qty             Subtotal       Sbt. After Dis        Saved\n";
         return header;
     }
 
