@@ -6,6 +6,7 @@
 package jh.discountstrategy;
 
 /**
+ * The general contract for all output strategy implementations.
  *
  * @author Jennifer
  */

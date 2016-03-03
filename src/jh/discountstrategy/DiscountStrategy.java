@@ -1,6 +1,7 @@
 package jh.discountstrategy;
 
 /**
+ * The general contract for all discount strategy implementations
  *
  * @author Jennifer
  */

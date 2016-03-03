@@ -6,13 +6,14 @@
 package jh.discountstrategy;
 
 /**
+ * The general contract for all database strategy implementations.
  *
  * @author Jennifer
  */
 public interface DatabaseStrategy {
 
-   public abstract Product FindProductById(String productId);
+    public abstract Product FindProductById(String productId);
 
-   public abstract Customer findCustomerById(String custId);
-    
+    public abstract Customer findCustomerById(String custId);
+
 }

@@ -5,7 +5,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 /**
- *
+ *This class simulates a receipt. JavaDoc incomplete 
  * @author Jennifer
  */
 public class Receipt {
@@ -27,7 +27,12 @@ public class Receipt {
         // needs validation 
         this.storeName = storeName;
     }
-
+ /**
+     * Custom constructor initializes required fields.
+     * @param storeName - name of seller
+     * @param custId - an unique customer id
+     * @param db - the persistence solution
+     */
     public Receipt(String custId, DatabaseStrategy db, String storeName) {
         setDb(db);
         setStoreName(storeName);

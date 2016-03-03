@@ -1,6 +1,9 @@
 package jh.discountstrategy;
 
 /**
+ * An implementation of the DatabaseStrategy contract. This fakes database
+ * access by using arrays of hard-code products and customers. There currently
+ * is no way of modifying these.
  *
  * @author Jennifer
  */
@@ -16,6 +19,12 @@ public class FakeDatabase implements DatabaseStrategy {
         new Product("12", "Women's Blouse", 49.95, new FlatAmountDiscount(5.00)),
         new Product("17", "Mens's Belt   ", 39.95, new NoDiscount())};
 
+    /**
+     * Finds a customer by its unique id.
+     *
+     * @param custId
+     * @return a Customer object or null if not found
+     */
     @Override
     public final Customer findCustomerById(String custId) {
         // needs validation 
@@ -32,6 +41,12 @@ public class FakeDatabase implements DatabaseStrategy {
 
     }
 
+    /**
+     * Finds a product by its unique id.
+     *
+     * @param productId
+     * @return a Product object or null if not found
+     */
     @Override
     public final Product FindProductById(String productId) {
         // needs validation 

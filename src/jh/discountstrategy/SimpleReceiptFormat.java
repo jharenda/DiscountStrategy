@@ -6,7 +6,8 @@
 package jh.discountstrategy;
 
 /**
- *
+ *This is a strategy implementation of the ReceiptFormatStrategy contract that
+ * shows a simple line item. After I format it, will update this to say what it includes. 
  * @author Jennifer
  */
 public class SimpleReceiptFormat implements OutputFormatStrategy {

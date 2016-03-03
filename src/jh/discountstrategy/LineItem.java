@@ -3,7 +3,8 @@ package jh.discountstrategy;
 import java.text.NumberFormat;
 
 /**
- *
+ * A simulation of a LineItem on a Receipt.
+ * JavaDoc incomplete for this class
  * @author Jennifer
  */
 public class LineItem {
@@ -33,6 +34,13 @@ public class LineItem {
         return data;
     }
 
+    /**
+     * Custom constructor uses required prodId and DatabaseStrategy to lookup
+     * Product and store it along with quantity required by customer.
+     * @param productId
+     * @param qty
+     * @param db 
+     */
     public LineItem(String productId, int qty, DatabaseStrategy db) {
         // needs validation, or is method doing it for us? 
         setProduct(db.FindProductById(productId));

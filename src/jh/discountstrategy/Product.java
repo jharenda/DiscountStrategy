@@ -1,7 +1,7 @@
 package jh.discountstrategy;
 
 /**
- *
+ *Simulates a real product in a POS system
  * @author Jennifer
  */
 public class Product {
@@ -13,13 +13,21 @@ public class Product {
     private double unitCost;
     private DiscountStrategy discount;
 
+    
+     /**
+     * Custom constructor validates all required information
+     * @param productId - unique id of product purchased
+     * @param productName - the name of the product
+     * @param unitCost - the original price for sale of one item
+     * @param discount - the discount strategy used for this product
+     */
     public Product(String productId, String productName, double unitCost, DiscountStrategy discount) {
         setProductId(productId);
         setProductName(productName);
         setUnitCost(unitCost);
         setDiscount(discount);
     }
-
+// Rest of methods- no JavaDoc until Validation occurs. 
     public final String getProductId() {
         return productId;
     }

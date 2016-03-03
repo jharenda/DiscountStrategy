@@ -1,7 +1,8 @@
 package jh.discountstrategy;
 
 /**
- *
+ * An implementation of the DiscountStrategy contract that represents no
+ * discount whatsoever.
  * @author Jennifer
  */
 public class NoDiscount implements DiscountStrategy {
@@ -11,7 +12,7 @@ public class NoDiscount implements DiscountStrategy {
 
     public NoDiscount() {
     }
-
+// Getters and Setters- no JavaDoc until validation\\
     @Override
     public final double getDiscountAmount(int qty, double unitCost) {
         // needs validation 

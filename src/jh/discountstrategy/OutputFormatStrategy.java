@@ -6,6 +6,7 @@
 package jh.discountstrategy;
 
 /**
+ * The general contract for all receipt format strategy implementations.
  *
  * @author Jennifer
  */
