@@ -24,9 +24,14 @@ public class SimpleReceiptFormat implements OutputFormatStrategy {
             sb.append(String.format("%-25s", item.getProduct().getProductName()));
             sb.append(String.format("%8.2f", item.getProduct().getUnitCost()));
             sb.append(String.format("%10d", item.getQty()));
+            sb.append("  "); 
+            sb.append( item.getSubTotal()); 
+                    sb.append(item.getProduct().getDiscountedProductTotal(item.getQty()));
 
         }
         sb.append("\n Total pre-discount: " + total);
+        sb.append("\n + Total discount applied:  " + receipt.getTotalDiscount());
+        sb.append("\n Total Due: " + receipt.total() - receipt.getTotalDiscount());
         return sb + "\n  simple";
     }
 
