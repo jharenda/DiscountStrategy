@@ -1,4 +1,3 @@
-
 package jh.discountstrategy;
 
 /**
@@ -6,6 +5,7 @@ package jh.discountstrategy;
  * @author Jennifer
  */
 public interface DiscountStrategy {
-  public abstract double getDiscountAmount(int qty, double unitCost);
-  
+
+    public abstract double getDiscountAmount(int qty, double unitCost);
+
 }

@@ -17,14 +17,13 @@ public class Customer {
         setName(name);
     }
 
+     // GETTERS/SETTERS DON'T NEED DOCS UNTIL VALIDATION CODE ADDED //
     public final String getCustomerId() {
         return customerId;
     }
 
     public final void setCustomerId(String customerId) {
-        if (customerId == null) {
-            System.out.println("Customer.setCustID method given illegal argument");
-        }
+        // needs validation 
         this.customerId = customerId;
     }
 
@@ -33,9 +32,7 @@ public class Customer {
     }
 
     public final void setName(String name) {
-        if (name == null) {
-            System.out.println("Customer.setName method given illegal argument");
-        }
+        // needs validation 
         this.name = name;
     }
 

@@ -9,10 +9,10 @@ package jh.discountstrategy;
  *
  * @author Jennifer
  */
-public interface DBS {
+public interface DatabaseStrategy {
 
-    Product FindProductById(String productId);
+   public abstract Product FindProductById(String productId);
 
-    Customer findCustomerById(String custId);
+   public abstract Customer findCustomerById(String custId);
     
 }

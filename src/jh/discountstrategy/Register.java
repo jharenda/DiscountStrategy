@@ -9,13 +9,16 @@ public class Register {
     private Receipt receipt;
     private String storeName = "Kohls ";
 
-    public final void startNewSale(String custId, DBS db, String storeName) {
+    public final void startNewSale(String custId, DatabaseStrategy db, String storeName) {
         //needs validation. SHould check for null or illegal values. 
         receipt = new Receipt(custId, db, this.storeName);
     }
 
-    public final void endSale(OutputStrategy out) {
-        out.printReceipt(receipt);
+    public final void endSale(OutputStrategy out, OutputFormatStrategy outputFormat) {
+        // needs validation 
+        String x = outputFormat.formatOutput(receipt);
+
+        out.printReceipt(x);
 
     }
 
@@ -24,9 +27,7 @@ public class Register {
     }
 
     public final void setReceipt(Receipt receipt) {
-        if (receipt == null) {
-            System.out.println("Register.setReceipt method given illegal argument");
-        }
+        // needs validation 
         this.receipt = receipt;
 
     }
@@ -36,15 +37,13 @@ public class Register {
     }
 
     public final void setStoreName(String storeName) {
-        if (storeName == null) {
-            System.out.println("Receipt.setStoreName method given illegal argument");
-        }
+        // needs validation 
 
         this.storeName = storeName;
     }
 
     public final void addItemsToSale(String prodId, int qty) {
-
+        // needs validation 
         receipt.addItemToReceipt(prodId, qty);
     }
 

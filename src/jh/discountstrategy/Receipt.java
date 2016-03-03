@@ -10,8 +10,8 @@ import java.util.Date;
  */
 public class Receipt {
 
-    NumberFormat nf = NumberFormat.getCurrencyInstance();
-    private DBS db;
+    private NumberFormat nf = NumberFormat.getCurrencyInstance();
+    private DatabaseStrategy db;
     private Customer customer;
     private final Date date = Calendar.getInstance().getTime();
     private LineItem[] lineItems;
@@ -19,41 +19,37 @@ public class Receipt {
     private double totalDiscount;
     private String storeName;
 
-    public String getStoreName() {
+    public final String getStoreName() {
         return storeName;
     }
 
-    public void setStoreName(String storeName) {
-        if (storeName == null || storeName.length() < 1) {
-            System.out.println("Receipt.setStoreName given illegal arugument ");
-        }
+    public final void setStoreName(String storeName) {
+        // needs validation 
         this.storeName = storeName;
     }
 
-    public Receipt(String custId, DBS db, String storeName) {
+    public Receipt(String custId, DatabaseStrategy db, String storeName) {
         setDb(db);
         setStoreName(storeName);
         setCustomer(db.findCustomerById(custId));
         lineItems = new LineItem[0];
     }
 
-    public String lineItemHeader() {
+    public final String lineItemHeader() {
         String header = "ID       Name              Qty        Subtotal       Sbt. After Dis   Saved\n";
         return header;
     }
 
-    public Date getDate() {
+    public final Date getDate() {
         return date;
     }
 
-    public final DBS getDb() {
+    public final DatabaseStrategy getDb() {
         return db;
     }
 
-    public final void setDb(DBS db) {
-        if (db == null) {
-            System.out.println("LineItem.setDb method given illegal argument");
-        }
+    public final void setDb(DatabaseStrategy db) {
+        // needs validation 
 
         this.db = db;
     }
@@ -63,11 +59,13 @@ public class Receipt {
     }
 
     public final void setCustomer(Customer customer) {
-        if (customer == null) {
-            System.out.println("Receipt.setCustomer given illegal argument");
-        }
-
+        // needs validation 
         this.customer = customer;
+    }
+
+    public final double total() {
+        double preDiscountTotal = getSubTotalBeforeDiscount();
+        return preDiscountTotal;
     }
 
     public final String printReceipt() {
@@ -101,14 +99,15 @@ public class Receipt {
         addItemToArray(lineItems, item);
     }
 
-    private void addItemToArray(LineItem[] origArray, LineItem item) {
+    private final void addItemToArray(LineItem[] origArray, LineItem item) {
+        // private, so does not need validation? Should ask about this. 
         LineItem[] temp = new LineItem[origArray.length + 1];
         System.arraycopy(origArray, 0, temp, 0, origArray.length);
         temp[temp.length - 1] = item;
         lineItems = temp;
     }
 
-    public LineItem[] getLineItems() {
+    public final LineItem[] getLineItems() {
         return lineItems;
     }
 
@@ -128,7 +127,7 @@ public class Receipt {
         return totalDiscount;
     }
 
-    public void setLineItems(LineItem[] lineItems) {
+    public final void setLineItems(LineItem[] lineItems) {
         //should be validated somehow
         this.lineItems = lineItems;
     }

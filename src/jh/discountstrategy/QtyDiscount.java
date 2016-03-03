@@ -11,6 +11,7 @@ public class QtyDiscount implements DiscountStrategy {
     private final int NO_DISCOUNT = 0;
 
     public QtyDiscount(double discountRate, int minQty) {
+        // does validation for us
         this.discountRate = discountRate;
         setDiscountRate(discountRate);
         setMinQty(minQty);
@@ -21,9 +22,7 @@ public class QtyDiscount implements DiscountStrategy {
     }
 
     public final void setMinQty(int minQty) {
-        if (minQty < 1) {
-            System.out.println("QtyDiscount.setMinQty given illegal arugment");
-        }
+        // needs validation 
 
         this.minQty = minQty;
     }
@@ -43,9 +42,7 @@ public class QtyDiscount implements DiscountStrategy {
     }
 
     public final void setDiscountRate(double discountRate) {
-        if (discountRate < 0){
-            System.out.println("QtyDiscount.setDiscountRate given illegal arugment.");
-        }
+        // needs validation 
         this.discountRate = discountRate;
     }
 

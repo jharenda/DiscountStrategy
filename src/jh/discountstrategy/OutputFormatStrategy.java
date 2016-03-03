@@ -9,7 +9,7 @@ package jh.discountstrategy;
  *
  * @author Jennifer
  */
-public interface OutputStrategy {
+public interface OutputFormatStrategy {
 
-    public abstract void printReceipt(String output);
+    public abstract String formatOutput(Receipt receipt);
 }

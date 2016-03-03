@@ -8,15 +8,13 @@ import java.text.NumberFormat;
  */
 public class LineItem {
 
-    NumberFormat nf = NumberFormat.getCurrencyInstance();
+    private NumberFormat nf = NumberFormat.getCurrencyInstance();
     private Product product;
     private int qty;
     private double[] subtotals;
 
     public final void setQty(int qty) {
-        if (qty == 0) {
-            System.out.println("LineItem.setProduct method given illegal argument");
-        }
+        // needs validation 
         this.qty = qty;
     }
 
@@ -28,14 +26,15 @@ public class LineItem {
     }
 
     //needs to be better formatted for allignment 
-    public String getLineItemData() {
+    public final String getLineItemData() {
         String data
                 = "----     ------            ------     ------         ------           ------\n"
                 + this.getProduct().getProductId() + "       " + this.getProduct().getProductName() + "    " + this.getQty() + "          " + nf.format(getSubTotal()) + "        " + nf.format(this.getDiscountedSubTotal()) + "             " + nf.format(this.getProduct().getDiscount().getDiscountAmount(qty, product.getUnitCost()));
         return data;
     }
 
-    public LineItem(String productId, int qty, DBS db) {
+    public LineItem(String productId, int qty, DatabaseStrategy db) {
+        // needs validation, or is method doing it for us? 
         setProduct(db.FindProductById(productId));
         this.qty = qty;
     }
@@ -52,17 +51,12 @@ public class LineItem {
         return product.getUnitCost();
     }
 
-//    public final double getDiscountTotal(int qty){
-//        return product.getDiscountedProductTotal(qty);
-//    }
     public final Product getProduct() {
         return product;
     }
 
     public final void setProduct(Product product) {
-        if (product == null) {
-            System.out.println("LineItem.setProduct method given illegal argument");
-        }
+        // needs validation 
         this.product = product;
     }
 

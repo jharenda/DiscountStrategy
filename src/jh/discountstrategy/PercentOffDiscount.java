@@ -9,6 +9,7 @@ public class PercentOffDiscount implements DiscountStrategy {
     private double discountRate;
 
     public PercentOffDiscount(double discountRate) {
+        // should do validation for us? 
         this.discountRate = discountRate;
         setDiscountRate(discountRate);
     }
@@ -24,9 +25,7 @@ public class PercentOffDiscount implements DiscountStrategy {
     }
 
     public final void setDiscountRate(double discountRate) {
-        if (discountRate < 0) {
-            System.out.println("PercentOffDiscount.setDiscountRate given illegal arugment");
-        }
+        // needs validation 
 
         this.discountRate = discountRate;
     }

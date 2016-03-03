@@ -4,7 +4,7 @@ package jh.discountstrategy;
  *
  * @author Jennifer
  */
-public class FakeDatabase implements DBS {
+public class FakeDatabase implements DatabaseStrategy {
 
     private Customer[] customers = {
         new Customer("100", "Peggy Olsen"),
@@ -18,30 +18,24 @@ public class FakeDatabase implements DBS {
 
     @Override
     public final Customer findCustomerById(String custId) {
-         Customer customer = null;
-       if(custId == null) {
-            System.out.println("FakeDatabase.findCustomerById method given illegal argument");
-        }
-       else {
+        // needs validation 
+        Customer customer = null;
+
         for (Customer c : customers) {
             if (c.getCustomerId().equals(custId)) {
                 customer = c;
                 break;
             }
         }
-       }
+
         return customer;
-       
+
     }
+
     @Override
-    public final Product FindProductById(String productId) {   
+    public final Product FindProductById(String productId) {
+        // needs validation 
         Product product = null;
-        
-        if(productId == null) {
-            System.out.println("FakeDatabase.findProductById method given illegal argument");
-        }
-        else {
- 
 
         for (Product p : products) {
             if (p.getProductId().equals(productId)) {
@@ -49,8 +43,8 @@ public class FakeDatabase implements DBS {
                 break;
             }
         }
-        }
+
         return product;
-    
+
     }
 }

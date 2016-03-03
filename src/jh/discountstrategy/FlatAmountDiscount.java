@@ -9,6 +9,7 @@ public class FlatAmountDiscount implements DiscountStrategy {
     private double discountRate = 0.0;
 
     public FlatAmountDiscount(double discountRate) {
+        //this will do the validation for us
         this.discountRate = discountRate;
         setDiscountRate(discountRate);
     }
@@ -24,9 +25,7 @@ public class FlatAmountDiscount implements DiscountStrategy {
     }
 
     public final void setDiscountRate(double discountRate) {
-        if (discountRate < 0) {
-            System.out.println("FlatAmountDiscount.setDiscountRate given illegal argument");
-        }
+        // needs validation 
         this.discountRate = discountRate;
     }
 

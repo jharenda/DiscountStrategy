@@ -12,10 +12,9 @@ package jh.discountstrategy;
 public class ConsoleOutput implements OutputStrategy {
 
     @Override
-    public void printReceipt(Receipt r) {
-        System.out.println(r.printReceipt());
+    public void printReceipt(String output) {
+        // would do validation here to check arugment for validity. 
+        System.out.println(output);
     }
 
-    }
-    
-
+}
