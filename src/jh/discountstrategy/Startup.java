@@ -18,7 +18,7 @@ public class Startup {
         // KLUDGE: do configuration here
         DatabaseStrategy db = new FakeDatabase();
         ConsoleOutput consoleOutput = new ConsoleOutput();
-        GuiOutput gui = new GuiOutput();
+        ScreenOutput gui = new ScreenOutput();
         OutputFormatStrategy verboseOutput = new VerboseReceiptFormat();
         OutputFormatStrategy simpleOutput = new SimpleReceiptFormat();
         // Start talking to objects

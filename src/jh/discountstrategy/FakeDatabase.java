@@ -15,8 +15,8 @@ public class FakeDatabase implements DatabaseStrategy {
         new Customer("117", "Joan Harris")};
 
     private Product[] products = {
-        new Product("11", "Met's Hat     ", 29.95, new PercentOffDiscount(.10)),
-        new Product("12", "Women's Blouse", 49.95, new FlatAmountDiscount(5.00)),
+        new Product("11", "Met's Hat        ", 29.95, new PercentOffDiscount(.10)),
+        new Product("12", "Pet Shoes     ", 49.95, new FlatAmountDiscount(5.00)),
         new Product("17", "Mens's Belt   ", 39.95, new NoDiscount())};
 
     /**
