@@ -19,8 +19,16 @@ public class ConsoleOutput implements OutputStrategy {
      * @param output - the data to output. NOTE: not currently validated!
      */
     @Override
-    public void printReceipt(String output) {
-        // would do validation here to check arugment for validity. 
+    public void printReceipt(String output) throws IllegalArgumentException {
+        if (output == null || output.isEmpty())
+            {
+               throw new IllegalArgumentException("Null @ ConsoleOutput.printReceipt");
+           }
+       try {  System.out.println(output);
+    }catch (IllegalArgumentException e ){
+        System.out.println(e.getMessage()); 
+    }
+          
         System.out.println(output);
     }
 

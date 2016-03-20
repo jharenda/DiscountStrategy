@@ -15,8 +15,7 @@ public class PercentOffDiscount implements DiscountStrategy {
      * @param discountRate 
      */
     public PercentOffDiscount(double discountRate) {
-        // should do validation for us? 
-        this.discountRate = discountRate;
+
         setDiscountRate(discountRate);
     }
  
@@ -28,8 +27,11 @@ public class PercentOffDiscount implements DiscountStrategy {
      * @return qty * unitCost * discount percentage
      */
     @Override
-    public final double getDiscountAmount(int qty, double unitCost) {
-        // needs validation 
+    public final double getDiscountAmount(int qty, double unitCost)throws IllegalArgumentException {
+     if ( qty <= 0  || unitCost <= 0)
+            {
+               throw new IllegalArgumentException("0 @ PercentOffDiscount.getDiscountAmt");
+           }
         return unitCost * qty * getDiscountRate();
     }
 // No JavaDoc unitil validation is added.\\
@@ -37,8 +39,11 @@ public class PercentOffDiscount implements DiscountStrategy {
         return discountRate;
     }
 
-    public final void setDiscountRate(double discountRate) {
-        // needs validation 
+    public final void setDiscountRate(double discountRate)throws IllegalArgumentException {
+      if ( discountRate <= 0)
+            {
+               throw new IllegalArgumentException("0 @ PercentOffDiscount.getDiscountRate");
+           }
 
         this.discountRate = discountRate;
     }

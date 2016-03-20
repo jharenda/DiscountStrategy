@@ -14,8 +14,11 @@ public class LineItem {
     private int qty;
     private double[] subtotals;
 
-    public final void setQty(int qty) {
-        // needs validation 
+    public final void setQty(int qty)throws IllegalArgumentException {
+       if (qty <= 0)
+            {
+               throw new IllegalArgumentException("Null @ LineItem.setQty");
+           }
         this.qty = qty;
     }
 
@@ -44,7 +47,7 @@ public class LineItem {
     public LineItem(String productId, int qty, DatabaseStrategy db) {
         // needs validation, or is method doing it for us? 
         setProduct(db.FindProductById(productId));
-        this.qty = qty;
+        setQty(qty);
     }
 
     public final String getProductID() {
@@ -63,8 +66,11 @@ public class LineItem {
         return product;
     }
 
-    public final void setProduct(Product product) {
-        // needs validation 
+    public final void setProduct(Product product)throws IllegalArgumentException {
+    if ( product == null )
+            {
+               throw new IllegalArgumentException("Null @ LineItem.setProduct");
+           }
         this.product = product;
     }
 

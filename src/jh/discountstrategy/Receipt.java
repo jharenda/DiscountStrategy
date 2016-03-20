@@ -23,7 +23,7 @@ public class Receipt {
         return storeName;
     }
 
-    public final void setStoreName(String storeName) {
+    public final void setStoreName(String storeName)throws IllegalArgumentException {
         // needs validation 
         this.storeName = storeName;
     }
@@ -53,8 +53,13 @@ public class Receipt {
         return db;
     }
 
-    public final void setDb(DatabaseStrategy db) {
-        // needs validation 
+    public final void setDb(DatabaseStrategy db)throws IllegalArgumentException {
+   if (db == null)
+  
+            {
+               throw new IllegalArgumentException("null @ Receipt.setDb");
+           }  
+   
 
         this.db = db;
     }
@@ -63,8 +68,11 @@ public class Receipt {
         return customer;
     }
 
-    public final void setCustomer(Customer customer) {
-        // needs validation 
+    public final void setCustomer(Customer customer) throws IllegalArgumentException{
+       if (customer == null)
+            {
+               throw new IllegalArgumentException("null @ Receipt.setCustomer");
+           }
         this.customer = customer;
     }
 
@@ -98,14 +106,20 @@ public class Receipt {
 
     }
 
-    public final void addItemToReceipt(String productID, int qty) {
-        //would need to validate parameters that are being passed in
-        LineItem item = new LineItem(productID, qty, db);
+    public final void addItemToReceipt(String productId, int qty)throws IllegalArgumentException {
+      if ( qty <= 0  ||productId == null || productId.isEmpty())
+            {
+               throw new IllegalArgumentException("0 or null/empty @ Receipt.addItemToReceipt");
+           }
+        LineItem item = new LineItem(productId, qty, db);
         addItemToArray(lineItems, item);
     }
 
-    private final void addItemToArray(LineItem[] origArray, LineItem item) {
-        // private, so does not need validation? Should ask about this. 
+    private final void addItemToArray(LineItem[] origArray, LineItem item)throws IllegalArgumentException {
+       if ( origArray == null || item == null)
+            {
+               throw new IllegalArgumentException("null @ Receipt.addItemToArray");
+           }
         LineItem[] temp = new LineItem[origArray.length + 1];
         System.arraycopy(origArray, 0, temp, 0, origArray.length);
         temp[temp.length - 1] = item;
@@ -132,8 +146,11 @@ public class Receipt {
         return totalDiscount;
     }
 
-    public final void setLineItems(LineItem[] lineItems) {
-        //should be validated somehow
+    public final void setLineItems(LineItem[] lineItems)throws IllegalArgumentException {
+    if ( lineItems == null)
+            {
+               throw new IllegalArgumentException("null @ Receipt.setLineItems");
+           }
         this.lineItems = lineItems;
     }
 

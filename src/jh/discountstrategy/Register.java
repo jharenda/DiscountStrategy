@@ -8,10 +8,14 @@ package jh.discountstrategy;
 public class Register {
 
     private Receipt receipt;
-    private String storeName = "Kohls ";
+    private String storeName; // = "Kohls ";
 
-    public final void startNewSale(String custId, DatabaseStrategy db, String storeName) {
+    public final void startNewSale(String custId, DatabaseStrategy db, String storeName) throws IllegalArgumentException  {
         //needs validation. SHould check for null or illegal values. 
+        if(custId == null || custId.isEmpty() || db == null || storeName == null || storeName.isEmpty() ) {
+            throw new IllegalArgumentException("Illegal, man");
+        }
+        else 
         receipt = new Receipt(custId, db, this.storeName);
     }
 /**
@@ -20,8 +24,12 @@ public class Register {
      * @param out
      * @param outputFormat
      */
-    public final void endSale(OutputStrategy out, OutputFormatStrategy outputFormat) {
-        // needs validation 
+    public final void endSale(OutputStrategy out, OutputFormatStrategy outputFormat) throws IllegalArgumentException{
+        if(out == null || outputFormat == null) 
+            {
+               throw new IllegalArgumentException("output error");
+           }
+       
         String x = outputFormat.formatOutput(receipt);
 
         out.printReceipt(x);
@@ -34,8 +42,11 @@ public class Register {
      * bar code scanner would capture
      * @param qty - the number of this product being purchased
      */
-       public final void addItemsToSale(String prodId, int qty) {
-        // needs validation 
+       public final void addItemsToSale(String prodId, int qty) throws IllegalArgumentException {
+           if( prodId == null || prodId.isEmpty() || qty <= 0 || qty > 3000){
+               throw new IllegalArgumentException("Product id or qty error");
+           }
+       else
         receipt.addItemToReceipt(prodId, qty);
     }
     // getters and setters- add JavaDoc after validation updated. 
@@ -43,8 +54,12 @@ public class Register {
         return receipt;
     }
 
-    public final void setReceipt(Receipt receipt) {
-        // needs validation 
+    public final void setReceipt(Receipt receipt)throws IllegalArgumentException {
+        if(receipt == null)
+            {
+               throw new IllegalArgumentException("Receipt is null");
+           }
+     
         this.receipt = receipt;
 
     }
@@ -53,8 +68,11 @@ public class Register {
         return storeName;
     }
 
-    public final void setStoreName(String storeName) {
-        // needs validation 
+    public final void setStoreName(String storeName) throws IllegalArgumentException  {
+        if(storeName == null || storeName.isEmpty() || storeName.length() <=1){
+               throw new IllegalArgumentException("StoreName Error");
+           }
+      
 
         this.storeName = storeName;
     }

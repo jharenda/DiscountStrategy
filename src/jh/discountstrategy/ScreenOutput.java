@@ -15,8 +15,11 @@ public class ScreenOutput  implements OutputStrategy{
      @Override
 
      public final void printReceipt(String output) {
-         // needs validation 
-          JOptionPane.showMessageDialog(null, output);
+    try {  JOptionPane.showMessageDialog(null, output);
+    }catch (IllegalArgumentException e ){
+        System.out.println(e.getMessage()); 
+    }
+         
 }
 }
     

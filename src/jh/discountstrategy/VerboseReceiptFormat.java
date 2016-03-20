@@ -21,6 +21,10 @@ public class VerboseReceiptFormat implements OutputFormatStrategy {
     private NumberFormat nf = NumberFormat.getCurrencyInstance();
     @Override
    public final String formatOutput(Receipt receipt) {
+       if (receipt == null)
+           {
+               throw new IllegalArgumentException("Receipt is null at  erboseReceiptFormat.formatOutput");
+           }
        
         // needs validation 
         

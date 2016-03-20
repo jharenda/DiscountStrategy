@@ -32,8 +32,11 @@ public class Product {
         return productId;
     }
 
-    public final void setProductId(String productId) {
-        // needs validation 
+    public final void setProductId(String productId)throws IllegalArgumentException {
+       if ( productId == null || productId.isEmpty() )
+            {
+               throw new IllegalArgumentException("null/empty @ Productf.setProductId");
+           }
         this.productId = productId;
     }
 
@@ -41,9 +44,11 @@ public class Product {
         return productName;
     }
 
-    public final void setProductName(String productName) {
-        // needs validation 
-
+    public final void setProductName(String productName) throws IllegalArgumentException{
+       if ( productName == null || productName.isEmpty())
+            {
+               throw new IllegalArgumentException("null/empty @ Product.getProductName");
+           }
         this.productName = productName;
     }
 
@@ -51,8 +56,11 @@ public class Product {
         return unitCost;
     }
 
-    public final void setUnitCost(double unitCost) {
-        // needs validation 
+    public final void setUnitCost(double unitCost)throws IllegalArgumentException {
+        if ( unitCost <= 0)
+            {
+               throw new IllegalArgumentException("0 @ Product.setUnitcost");
+           }
         this.unitCost = unitCost;
     }
 
@@ -60,13 +68,19 @@ public class Product {
         return discount;
     }
 
-    public final void setDiscount(DiscountStrategy discount) {
-        // needs validation 
+    public final void setDiscount(DiscountStrategy discount)throws IllegalArgumentException {
+      if (discount == null)
+            {
+               throw new IllegalArgumentException("null @ Product.setDiscountAmount");
+           }
         this.discount = discount;
     }
 
-    public final double getDiscountedProductTotal(int qty) {
-        // needs validation 
+    public final double getDiscountedProductTotal(int qty)throws IllegalArgumentException {
+      if ( qty <= 0 )
+            {
+               throw new IllegalArgumentException("0 @ Product.getDiscountedProductTotal");
+           }
         return discount.getDiscountAmount(qty, unitCost);
     }
 

@@ -10,7 +10,11 @@ public class FlatAmountDiscount implements DiscountStrategy {
 
     private double discountRate = 0.0;
 
-    public FlatAmountDiscount(double discountRate) {
+    public FlatAmountDiscount(double discountRate) throws IllegalArgumentException  {
+         if ( discountRate < 0 || discountRate > 100) 
+            {
+               throw new IllegalArgumentException("Bad value at FlatAmountDiscount constructor");
+           }
         //this will do the validation for us
         this.discountRate = discountRate;
         setDiscountRate(discountRate);
@@ -26,7 +30,11 @@ public class FlatAmountDiscount implements DiscountStrategy {
      * @return
      */
     @Override
-    public final double getDiscountAmount(int qty, double unitCost) {
+    public final double getDiscountAmount(int qty, double unitCost) throws IllegalArgumentException {
+        if ( discountRate < 0 || discountRate > 100) 
+            {
+               throw new IllegalArgumentException("Bad value at FlatAmountDiscount.setCustomerId");
+           }
         // needs validation 
         return discountRate;
     }
@@ -36,7 +44,11 @@ public class FlatAmountDiscount implements DiscountStrategy {
         return discountRate;
     }
 
-    public final void setDiscountRate(double discountRate) {
+    public final void setDiscountRate(double discountRate) throws IllegalArgumentException {
+        if ( discountRate < 0 || discountRate > 100) 
+            {
+               throw new IllegalArgumentException("Bad value at FlatAmountDiscount.setCustomerId");
+           }
         // needs validation 
         this.discountRate = discountRate;
     }

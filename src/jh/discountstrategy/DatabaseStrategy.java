@@ -11,6 +11,7 @@ package jh.discountstrategy;
  * @author Jennifer
  */
 public interface DatabaseStrategy {
+ 
 
     public abstract Product FindProductById(String productId);
 

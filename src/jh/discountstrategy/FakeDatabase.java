@@ -26,7 +26,11 @@ public class FakeDatabase implements DatabaseStrategy {
      * @return a Customer object or null if not found
      */
     @Override
-    public final Customer findCustomerById(String custId) {
+    public final Customer findCustomerById(String custId) throws IllegalArgumentException {
+         if ( custId == null || custId.isEmpty())
+            {
+               throw new IllegalArgumentException("Null @ FakeDatabase.findCustomerById");
+           }
         // needs validation 
         Customer customer = null;
 
@@ -49,7 +53,11 @@ public class FakeDatabase implements DatabaseStrategy {
      */
     @Override
     public final Product FindProductById(String productId) {
-        // needs validation 
+         if (productId == null || productId.isEmpty())
+            {
+               throw new IllegalArgumentException("Null @ Fakedatabawe.findProductById");
+           }
+       
         Product product = null;
 
         for (Product p : products) {
@@ -62,4 +70,6 @@ public class FakeDatabase implements DatabaseStrategy {
         return product;
 
     }
+
+   
 }

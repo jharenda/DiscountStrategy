@@ -36,8 +36,11 @@ public class QtyDiscount implements DiscountStrategy {
      * eligible for discount.
      */
     @Override
-    public final double getDiscountAmount(int qty, double unitCost) {
-        // needs validation 
+    public final double getDiscountAmount(int qty, double unitCost)throws IllegalArgumentException {
+      if ( qty <= 0  || unitCost <= 0)
+            {
+               throw new IllegalArgumentException("0 @ QtyDiscount.getDiscountAmt");
+           }
         if (qty >= minQty) {
             return unitCost * qty * discountRate;
         } else {
@@ -49,16 +52,22 @@ public class QtyDiscount implements DiscountStrategy {
         return discountRate;
     }
 
-    public final void setDiscountRate(double discountRate) {
-        // needs validation 
+    public final void setDiscountRate(double discountRate)throws IllegalArgumentException {
+      if ( discountRate <0 )
+            {
+               throw new IllegalArgumentException("0 @ QtyDiscount.setDiscountRate");
+           } 
         this.discountRate = discountRate;
     }
       public final int getMinQty() {
         return minQty;
     }
 
-    public final void setMinQty(int minQty) {
-        // needs validation 
+    public final void setMinQty(int minQty)throws IllegalArgumentException {
+     if ( minQty <= 0 )
+            {
+               throw new IllegalArgumentException("0 @ QtyDiscount.setMinQty");
+           }
 
         this.minQty = minQty;
     }

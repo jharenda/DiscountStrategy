@@ -23,9 +23,14 @@ public class Startup {
         OutputFormatStrategy simpleOutput = new SimpleReceiptFormat();
         // Start talking to objects
         Register reg = new Register();
-        reg.startNewSale("100", db, "KOHLS");
+      
+        reg.startNewSale("100", db, "Kohls");
+        
+    
+        
+       
 
-        reg.addItemsToSale("11", 2);
+        reg.addItemsToSale("11", 1);
         reg.addItemsToSale("12", 2);
         reg.addItemsToSale("17", 1);
         //output not formatted for gui, but could be done in the class
