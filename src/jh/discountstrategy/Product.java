@@ -33,9 +33,9 @@ public class Product {
     }
 
     public final void setProductId(String productId)throws IllegalArgumentException {
-       if ( productId == null || productId.isEmpty() )
+       if ( productId == null || productId.isEmpty()|| productId.trim().length() < 5 )
             {
-               throw new IllegalArgumentException("null/empty @ Productf.setProductId");
+               throw new IllegalProductIdException();
            }
         this.productId = productId;
     }
